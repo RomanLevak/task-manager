@@ -1,0 +1,5 @@
+# Dependency directory
+client/node_modules
+client/public/scripts
+client/public/styles
+server/node_modules

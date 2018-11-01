@@ -1,0 +1,58 @@
+@import './colors';
+
+#tab{
+	position: relative;
+	width: 100%;
+	height: 100%;
+	color: @tab-text;
+}
+
+.tab-header{
+	box-sizing: border-box;
+	color: @green;
+	font-size: 14px;
+	line-height: 14px;
+	padding: 3px 8px;
+	width: 145px;
+	height: 4%;
+	border-bottom: 1px solid @dark-blue;
+	border-radius: 15px 20px 0 0;
+	background-color: @tab-background;
+}
+
+#tab-text-area{
+	position: relative;
+	color: @tab-text;
+	font-size: 18px;
+	resize: none;
+	border-radius: 0 15px 15px 15px;
+	background-color: @tab-background;
+	border: none;
+	width: 100%;
+	height: 96%;
+
+	&:focus{
+		outline: none;
+	}
+}
+
+.tab-btn{
+	position: absolute;
+	background-color: @dark-green;
+	font-size: 15px;	
+	color: @dark-blue;
+	border: none;
+	outline: none;
+	width: 80px;
+	height: 40px;
+	border-radius: 17px;
+	right: 7px;
+	bottom: 7px;
+	transition: font-size 0.2s, background-color 0.2s;
+
+	&:hover{
+		cursor: pointer;
+		font-size: 18px;
+		background-color: @green;
+	}
+}
