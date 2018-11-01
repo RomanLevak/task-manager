@@ -35,8 +35,8 @@ export default class Tab
 				<span id='tab-header-text'>${header_text}</span>
 			</header>
 			<textarea value=${body_text} id='tab-text-area'></textarea>
-		</div>
-		<button class='tab-btn' id='tab-save-btn'>Save</button>`
+		<button class='tab-btn' id='tab-save-btn'>Save</button>
+		</div>`
 
 		this.parent_node.innerHTML = body
 	}

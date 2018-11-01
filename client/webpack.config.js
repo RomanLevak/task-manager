@@ -28,15 +28,15 @@ module.exports = {
 	devtool: 'sourcemaps',
 	mode: 'development',
 	watch: true,
-	// plugins: [
-	// 	new BrowserSyncPlugin(
-	// 	{
-	// 		port: 6060,
-	// 		files: ['./public/*.html', './public/styles/*.css'],
-	// 		server:
-	// 		{
-	// 			baseDir: ['./public']
-	// 		}
-	// 	})
-	// ]
+	plugins: [
+		new BrowserSyncPlugin(
+		{
+			port: 6060,
+			files: ['./public/*.html', './public/styles/*.css'],
+			server:
+			{
+				baseDir: ['./public']
+			}
+		})
+	]
 }
