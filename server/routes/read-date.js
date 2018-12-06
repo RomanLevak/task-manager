@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const getDate = require('../DBrequests/read-file');
+const getDate = require('../DBrequests/read-file')
 
 router.route('/:year/:month/:day')
 	.get(getDate)

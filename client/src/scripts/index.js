@@ -1,20 +1,21 @@
 import Calendar from './calendar'
 import Tab from './tab'
 import '../styles/index.less'
-import
-{
+import {
 	createDateString,
-	createUrlFromDate,
 	getDayValue,
-	setDayValue
-}
-from './utils'
+	setDayText
+} from './utils'
 
 const calendar = new Calendar('calendar-wrap')
 
-const tab = new Tab('tab-wrap',
-	createDateString(calendar.selected_date),
-	getDayValue(calendar.selected_date))
+const tab = new Tab(
+		'tab-wrap',
+		createDateString(calendar.selected_date),
+		getDayValue(calendar.selected_date)
+	)
+
+const save_icon = document.getElementById('save-icon')
 
 //creates calender
 calendar.body_node.addEventListener('click', calendarClickHandler)
@@ -22,47 +23,45 @@ calendar.body_node.addEventListener('click', calendarClickHandler)
 //creates tab
 tab.save_btn.addEventListener('click', saveHandler)
 
-
 //sets the value for tab from server
-getDayValue(calendar.selected_date)
-	.then(text =>
-	{
-		let obj = JSON.parse(text)
-		tab.setBodyText(obj.text)
-	})
+getDayValue(calendar.selected_date).then(text => {
+	let obj = JSON.parse(text)
+	tab.setBodyText(obj.text)
+})
 
-function calendarClickHandler()
-{
-	let
-	{
-		selected_date
-	} = calendar
+//changes the tab header name when picked date is changed
+function calendarClickHandler() {
+	let { selected_date } = calendar
 
 	let tab_header_text = createDateString(selected_date)
 	tab.setHeaderText(tab_header_text)
 
-	getDayValue(selected_date)
-		.then(text =>
-		{
-			let obj = JSON.parse(text)
-			tab.setBodyText(obj.text)
-		})
+	getDayValue(selected_date).then(text => {
+		let obj = JSON.parse(text)
+		tab.setBodyText(obj.text)
+	})
 }
 
-function saveHandler()
-{
-	setDayValue(calendar.selected_date, tab.getBodyText())
+//save-icon animation
+function animateSave () {
+	save_icon.classList.remove('hidden')
+	const clone = save_icon.cloneNode(true)
+	save_icon.remove()
+	document.body.appendChild(clone)
 }
 
-document.body.addEventListener('keypress', (e) =>
-{
-	console.log(e.charCode)
+//saving text into db
+function saveHandler() {
+	setDayText(calendar.selected_date, tab.getBodyText())
+	.then(animateSave)
+}
+
+//handling 'ctrl + q' to save
+document.body.addEventListener('keypress', e => {
+	console.log(e.key)
 	if (!e.ctrlKey) return
 
-	if (e.charCode == 17)
-	{
+	if (e.charCode == 17) {
 		saveHandler()
-		console.log('save');
 	}
-
 })

@@ -1,6 +1,5 @@
-import '../styles/calendar.less'
-
 export default class Calendar {
+	
 	constructor(id) {
 		this.displayed_date = new Date()                    //date wich calendar displays now
 		this.current_day = this.displayed_date.getDate()    //current world time

@@ -1,23 +1,19 @@
-const fs = require('fs')
+const 	
+	fs = require('fs')
+	path = require('path')
 
-const readDate = function(req, res, next)
-{
-	const
-	{
-		year,
-		month,
-		day
-	} = req.params
+const readDate = function(req, res, next) {
+	const { year, month, day } = req.params
 
-	fs.readFile(`./db/${year}-${month}/${day}.info`, 'utf-8', (err, data) =>
-	{
-		if (err) return res.json(
-		{
-			text: ''
-		})
+	const dir = path.resolve(`${__dirname}/../db/${year}-${month}`)
 
-		res.json(
-		{
+	fs.readFile(`${dir}}/${day}.info`, 'utf-8', (err, data) => {
+		if (err)
+			return res.json({
+				text: ''
+			})
+
+		res.json({
 			text: data
 		})
 	})

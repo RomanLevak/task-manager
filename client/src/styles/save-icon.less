@@ -1,0 +1,32 @@
+@keyframes slide-right {
+	from{
+		left: -104px;
+	}
+	to{
+		left: 50px;
+	}
+}
+
+.save-icon{
+	position: absolute;
+	top: 20px;
+	left: -104px;
+	height: 40px;
+	width: 94px;
+	padding-left: 19px;
+	line-height: 40px;
+	background: #3ac569;
+	color: #263959;
+	font-weight: bold;
+	border-radius: 15px;
+	box-sizing: border-box;
+
+	// Animation
+	&--active {
+		animation-name: slide-right;
+		animation-duration: 300ms;
+		animation-iteration-count: 2;
+		animation-direction: alternate;	
+	}
+}
+
