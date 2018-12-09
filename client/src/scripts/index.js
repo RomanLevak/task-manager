@@ -58,7 +58,6 @@ function saveHandler() {
 
 //handling 'ctrl + q' to save
 document.body.addEventListener('keypress', e => {
-	console.log(e.key)
 	if (!e.ctrlKey) return
 
 	if (e.charCode == 17) {

@@ -6,8 +6,9 @@ const readDate = function(req, res, next) {
 	const { year, month, day } = req.params
 
 	const dir = path.resolve(`${__dirname}/../db/${year}-${month}`)
+	
+	fs.readFile(`${dir}/${day}.info`, 'utf-8', (err, data) => {
 
-	fs.readFile(`${dir}}/${day}.info`, 'utf-8', (err, data) => {
 		if (err)
 			return res.json({
 				text: ''
